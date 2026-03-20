@@ -9,6 +9,4 @@ date: March 5th 2026
 tags: finance, databases, python
 ---
 
-## Blog Post Title
-
 *content here*
