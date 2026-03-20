@@ -40,9 +40,11 @@ fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
     const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
     const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
     document.getElementById("repo-finance-backend").innerHTML = `
-      <p>${data.description}</p>
-      <p>🗣 ${data.language} · 🕒 Updated ${updated}</p>
-      <div>${topics}</div>
+      <div class="repo-card">
+        <p><em>${data.description}</em></p>
+        <p><strong>Language:</strong> ${data.language} &nbsp;·&nbsp; <strong>Last updated:</strong> ${updated}</p>
+        <p><strong>Topics:</strong> ${topics}</p>
+      </div>
     `;
   });
 </script><div id="repo-info-finance-backend"></div>

@@ -102,6 +102,14 @@ blockquote {
   margin: 2px;
 }
 
+.repo-card {
+  border: 1px solid #1e2a4a;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+  background-color: #0d1117;
+}
+
 img {
   max-width: 50%;
   height: auto;
