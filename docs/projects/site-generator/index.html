@@ -31,7 +31,11 @@ fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
     const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
     document.getElementById("repo-portfolio").innerHTML = `
       <div class="repo-card">
-        <p><em>${data.description}</em></p>
+        <div class="repo-card-header">
+          <img src="/portfolio/images/GitHub_Invertocat_White.svg" style="height: 16px; width: 16px; margin-right: 8px; vertical-align: middle;" />
+          <span class="repo-name">${data.full_name}</span>
+        </div>
+        <p class="repo-description"><em>${data.description}</em></p>
         <p><strong>Language:</strong> ${data.language} &nbsp;·&nbsp; <strong>Last updated:</strong> ${updated}</p>
         <p><strong>Topics:</strong> ${topics}</p>
       </div>

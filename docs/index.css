@@ -117,11 +117,29 @@ blockquote {
 }
 
 .repo-card {
-  border: 1px solid var(--accent);
+  border-left: 4px solid var(--accent);
   border-radius: 6px;
-  padding: 16px;
+  padding: 16px 16px 16px 20px;
   margin: 16px 0;
-  background-color: var(--bg-card);
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+}
+
+.repo-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.repo-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.repo-description {
+  color: var(--text-primary);
+  margin: 8px 0;
 }
 
 img {
