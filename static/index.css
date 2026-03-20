@@ -106,6 +106,13 @@ blockquote {
   font-style: italic;
 }
 
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+  font-size: 0.9em;
+}
+
 .topic {
   display: inline-block;
   background-color: var(--bg-secondary);

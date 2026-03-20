@@ -1,3 +1,8 @@
+---
+template: default
+title: Test
+---
+
 # Heading 1
 
 ## Heading 2

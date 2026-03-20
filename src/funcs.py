@@ -209,32 +209,55 @@ def copy_content(src: str, dest: str) -> None:
         if os.path.isdir(src_path):
             copy_content(src_path, dest_path)
 
-def extract_title(markdown: str) -> str:
-    blocks = markdown_to_blocks(markdown)
-    for block in blocks:
-        if block_to_blocktype(block) == BlockType.HEADING and block.startswith("# "):
-            return block.lstrip("#").strip()
-    raise ValueError(f"No h1 title found")
-
-def generate_page(from_path: str, template_path: str, dest_path: str, basepath: str):
-    print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+def get_frontmatter(content: str) -> tuple[dict, str]:
+    if not content.startswith("---"):
+        return {}, content
     
+    frontmatter_dict = {}
+    frontmatter, content = content.split("---", 2)[1:]
+    for line in frontmatter.strip().split("\n"):
+        if not line.strip():
+            continue
+        key, value = line.split(": ", 1)
+        frontmatter_dict[key] = value
+    return frontmatter_dict, content
+
+def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: str):
     with open(from_path, "r") as f:
         content = f.read()
-    with open(template_path, "r") as f:
-        template = f.read()
-        
-    html_str = markdown_to_html_node(content).to_html()
-    title = extract_title(content)
     
-    final_html = template.replace("{{ Title }}", title).replace("{{ Content }}", html_str)
+    metadata, content = get_frontmatter(content)
+    html_str = markdown_to_html_node(content).to_html()
+    
+    template = metadata.get("template") or "default"
+    
+    template_path = os.path.join(template_dir, f"{template}.html")
+    if not os.path.exists(template_path):
+        raise ValueError(f"Template ({template}) does not exist")
+    
+    print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+    
+    with open(template_path, "r") as f:
+        template_str = f.read()
+        
+    placeholders = re.findall(r'\{\{ (\w+) \}\}', template_str)
+    for placeholder in placeholders:
+        if placeholder not in metadata and placeholder not in ("Content",):
+            raise ValueError(f"Missing frontmatter key: {placeholder} in {from_path}")
+        
+    for key, value in metadata.items():
+        template_str = template_str.replace(f"{{ {key} }}", value)
+    
+    final_html = template_str.replace("{{ Content }}", html_str)
     final_html = final_html.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
+    final_html = re.sub(r'\{\{ \w+ \}\}', '', final_html)
     
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w") as f:
         f.write(final_html)
+    
 
-def generate_pages(from_dir: str, template_path: str, dest_dir: str, basepath: str):
+def generate_pages(from_dir: str, template_dir: str, dest_dir: str, basepath: str):
     if not os.path.exists(from_dir):
         print(f"Directory ({from_dir}) does not exist")
         return
@@ -244,6 +267,6 @@ def generate_pages(from_dir: str, template_path: str, dest_dir: str, basepath: s
         full_dest = os.path.join(dest_dir, item)
         if os.path.isfile(full_src) and item.endswith(".md"):
             dest_name = item.replace(".md", ".html")
-            generate_page(full_src, template_path, os.path.join(dest_dir, dest_name), basepath)
+            generate_page(full_src, template_dir, os.path.join(dest_dir, dest_name), basepath)
         if os.path.isdir(full_src):
-            generate_pages(full_src, template_path, full_dest, basepath)
+            generate_pages(full_src, template_dir, full_dest, basepath)

@@ -1,3 +1,8 @@
+---
+title: Education
+template: default
+---
+
 # Education
 
 ## Vrije Universiteit Amsterdam

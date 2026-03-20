@@ -1,3 +1,8 @@
+---
+title: About Me
+template: default
+---
+
 # About Me
 
 I'm a student and developer based in the Netherlands with a background in programming and business analytics. I'm most at home working close to the metal — Linux internals, networking, embedded systems — and building tools I'd actually use myself.

@@ -1,3 +1,8 @@
+---
+title: Contact
+template: default
+---
+
 # Contact
 
 - **GitHub** — [Iwe-Coumou](https://github.com/Iwe-Coumou)

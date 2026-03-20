@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }} | Iwe Coumou</title>
+    <link href="/index.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  </head>
+  <body>
+    <nav>
+      <img src="/images/favicon-32x32.png" alt="logo" />
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/education">Education</a>
+      <a href="/projects">Projects</a>
+      <a href="/skills">Skills</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="page-nav">
+      <a href="/{{ prev }}">← {{ prev_label }}</a>
+      <a href="/{{ next }}">{{ next_label }} →</a>
+    </div>
+    <div id="repo-card"></div>
+    <script>
+    fetch("https://api.github.com/repos/{{ github }}")
+      .then(r => r.json())
+      .then(data => {
+        const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
+        const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+        document.getElementById("repo-card").innerHTML = `
+          <div class="repo-card">
+            <div class="repo-card-header">
+              <img src="/images/GitHub_Invertocat_White.svg" style="height: 16px; width: 16px; margin-right: 8px; vertical-align: middle;" />
+              <span class="repo-name">${data.full_name}</span>
+            </div>
+            <p class="repo-description"><em>${data.description}</em></p>
+            <p><strong>Language:</strong> ${data.language} &nbsp;·&nbsp; <strong>Last updated:</strong> ${updated}</p>
+            <p><strong>Topics:</strong> ${topics}</p>
+          </div>
+        `;
+      });
+    </script>
+    <article>{{ Content }}</article>
+  </body>
+</html>

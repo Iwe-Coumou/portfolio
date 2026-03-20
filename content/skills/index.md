@@ -1,3 +1,8 @@
+---
+template: default
+title: Skills
+---
+
 # Skills
 
 ## Languages

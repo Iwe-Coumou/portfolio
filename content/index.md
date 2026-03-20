@@ -1,3 +1,8 @@
+---
+template: default
+title: Home
+---
+
 # Iwe Coumou
 
 Student & developer based in the Netherlands. Interested in systems programming, quantitative finance, and machine learning.

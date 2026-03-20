@@ -1,32 +1,14 @@
+---
+template: project
+title: Portfolio Site & Static Site Generator
+github: Iwe-Coumou/portfolio
+next: projects
+next_label: Back to Projects
+prev: projects/finance-backend
+prev_label: Portfolio Analytics Backend
+---
+
 # Portfolio Site & Static Site Generator
-
-<div style="display: flex; justify-content: space-between;">
-  <a href="/projects/finance-api">← Previous: Portfolio Analytics Backend</a>
-  <a href="/projects">Back to projects</a>
-</div>
-
-**GitHub:** [Iwe-Coumou/portfolio](https://github.com/Iwe-Coumou/portfolio)
-
-<div id="repo-portfolio"></div>
-<script>
-fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
-  .then(r => r.json())
-  .then(data => {
-    const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
-    const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
-    document.getElementById("repo-portfolio").innerHTML = `
-      <div class="repo-card">
-        <div class="repo-card-header">
-          <img src="/images/GitHub_Invertocat_White.svg" style="height: 16px; width: 16px; margin-right: 8px; vertical-align: middle;" />
-          <span class="repo-name">${data.full_name}</span>
-        </div>
-        <p class="repo-description"><em>${data.description}</em></p>
-        <p><strong>Language:</strong> ${data.language} &nbsp;·&nbsp; <strong>Last updated:</strong> ${updated}</p>
-        <p><strong>Topics:</strong> ${topics}</p>
-      </div>
-    `;
-  });
-</script>
 
 ## What it does
 
