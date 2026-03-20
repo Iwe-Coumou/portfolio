@@ -6,7 +6,7 @@ A full portfolio analytics stack built around a FastAPI backend, TimescaleDB for
 
 <div id="repo-info-portfolio"></div>
 <script>
-fetch("https://api.github.com/repos/Iwe-Coumou/finance-api")
+fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
   .then(r => r.json())
   .then(data => {
     document.getElementById("repo-info-portfolio").innerHTML = 
