@@ -80,13 +80,6 @@ pre {
   overflow: auto;
 }
 
-@media (max-width: 600px) {
-  nav {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-}
-
 blockquote {
   background-color: #111827;
   border-left: 4px solid #fbbf24;
@@ -123,6 +116,21 @@ nav a {
 
 nav a:hover {
   color: #fbbf24;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 0.85em;
+  }
 }
 
 ::-webkit-scrollbar {
