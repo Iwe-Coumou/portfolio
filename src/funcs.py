@@ -246,7 +246,7 @@ def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: s
             raise ValueError(f"Missing frontmatter key: {placeholder} in {from_path}")
         
     for key, value in metadata.items():
-        template_str = template_str.replace(f"{{ {key} }}", value)
+        template_str = template_str.replace("{{ " + key + " }}", value)
     
     final_html = template_str.replace("{{ Content }}", html_str)
     final_html = final_html.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')

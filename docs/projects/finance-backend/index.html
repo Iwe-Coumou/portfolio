@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{Portfolio Analytics Backend} | Iwe Coumou</title>
+    <title>Portfolio Analytics Backend | Iwe Coumou</title>
     <link href="/portfolio/index.css" rel="stylesheet" />
     <link rel="apple-touch-icon" sizes="180x180" href="/portfolio/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/portfolio/images/favicon-32x32.png">
@@ -20,12 +20,12 @@
       <a href="/portfolio/contact">Contact</a>
     </nav>
     <div class="page-nav">
-      <a href="/portfolio/{projects}">← {Back to Projects}</a>
-      <a href="/portfolio/{projects/portfolio}">{Portfolio Site & Static Site Generator} →</a>
+      <a href="/portfolio/projects">← Back to Projects</a>
+      <a href="/portfolio/projects/portfolio">Portfolio Site & Static Site Generator →</a>
     </div>
     <div id="repo-card"></div>
     <script>
-    fetch("https://api.github.com/repos/{Iwe-Coumou/finance-backend}")
+    fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
       .then(r => r.json())
       .then(data => {
         const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
