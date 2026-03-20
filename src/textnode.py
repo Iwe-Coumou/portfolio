@@ -8,6 +8,12 @@ class TextType(Enum):
     LINK = 'link'
     IMAGE = 'image'
     
+DELIMITERS = {
+    TextType.BOLD: '**',
+    TextType.ITALIC: '_',
+    TextType.CODE: '`'
+}
+    
 class TextNode:
     text: str
     text_type: TextType

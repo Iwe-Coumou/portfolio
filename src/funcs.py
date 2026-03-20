@@ -1,4 +1,4 @@
-from textnode import TextNode, TextType
+from textnode import TextNode, TextType, DELIMITERS
 from leafnode import LeafNode
 from htmlnode import HTMLNode
 from blocks import BlockType
@@ -12,11 +12,11 @@ def text_node_to_html_node(text_node: TextNode):
         case TextType.TEXT:
             return LeafNode(tag=None, value=text_node.text)
         case TextType.BOLD:
-            return LeafNode(tag="b", value=text_node.text)
+            return ParentNode(tag="b", children=parse_inline(text_node.text))
         case TextType.ITALIC:
-            return LeafNode(tag="i", value=text_node.text)
+            return ParentNode(tag="i", children=parse_inline(text_node.text))
         case TextType.CODE:
-            return LeafNode(tag="code", value=text_node.text)
+            return ParentNode(tag="code", children=parse_inline(text_node.text))
         case TextType.LINK:
             return LeafNode(tag="a", value=text_node.text, props={"href": text_node.url})
         case TextType.IMAGE:
@@ -24,9 +24,9 @@ def text_node_to_html_node(text_node: TextNode):
         case _:
             raise Exception(f"Text type not supported")
         
-def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: TextType):
+def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: TextType) -> list[TextNode]:
     new_nodes = []
-    for node in old_nodes:
+    for node in old_nodes:        
         if node.text_type != TextType.TEXT:
             new_nodes.append(node)
             continue
@@ -48,6 +48,14 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
             is_text = not is_text
         new_nodes.extend(nodes)
     return new_nodes
+
+def parse_inline(text: str) -> list[HTMLNode]:
+    nodes = [TextNode(text=text, text_type=TextType.TEXT)]
+    nodes = split_nodes_image(nodes)
+    nodes = split_nodes_link(nodes)
+    for text_type, delimiter in DELIMITERS.items():
+        nodes = split_nodes_delimiter(nodes, delimiter, text_type)
+    return [text_node_to_html_node(node) for node in nodes]
 
 def extract_markdown_images(text: str) -> list[tuple]:
     return re.findall(r"!\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
@@ -112,15 +120,6 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
                 to_be_processed = split[1]
         new_nodes.extend(nodes)
     return new_nodes
-
-def text_to_textnodes(text: str) -> list[TextNode]:
-    nodes = [TextNode(text=text, text_type=TextType.TEXT)]
-    nodes = split_nodes_image(nodes)
-    nodes = split_nodes_link(nodes)
-    nodes = split_nodes_delimiter(nodes, delimiter="**", text_type=TextType.BOLD)
-    nodes = split_nodes_delimiter(nodes, delimiter="_", text_type=TextType.ITALIC)
-    nodes = split_nodes_delimiter(nodes, delimiter="`", text_type=TextType.CODE)
-    return nodes
     
 def markdown_to_blocks(markdown: str) -> list[str]:
     return [block.strip() for block in markdown.split("\n\n") if block != ""]
@@ -139,11 +138,7 @@ def block_to_blocktype(block: str) -> BlockType:
     return BlockType.PARAGRAPH
 
 def text_to_children(text: str) -> list[HTMLNode]:
-    text_nodes = text_to_textnodes(text=text)
-    html_nodes = []
-    for node in text_nodes:
-        html_nodes.append(text_node_to_html_node(node))
-    return html_nodes
+    return parse_inline(text)
 
 def block_to_node(block: str, block_type: BlockType) -> HTMLNode:
     match block_type:
