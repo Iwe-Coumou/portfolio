@@ -1,8 +1,8 @@
-# Portfolio Analytics Backend
-
 <div style="text-align: right;">
-  <a href="/projects/finance-api">Next: Portfolio Analytics Backend →</a>
+  <a href="/projects/site-generator">Next: Site generator that powers this portfolio →</a>
 </div>
+
+# Portfolio Analytics Backend
 
 **GitHub:** [Iwe-Coumou/finance-backend](https://github.com/Iwe-Coumou/finance-backend)
 
