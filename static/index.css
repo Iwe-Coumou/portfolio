@@ -104,34 +104,19 @@ nav {
   margin-bottom: 32px;
   border-bottom: 1px solid #1e2a4a;
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav a {
   border-bottom: none;
-  font-size: 0.95em;
+  font-size: clamp(0.6em, 2vw, 0.95em);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 nav a:hover {
   color: #fbbf24;
-}
-
-@media (max-width: 768px) {
-  body {
-    padding: 12px;
-  }
-  
-  nav {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  nav a {
-    font-size: 0.85em;
-  }
 }
 
 ::-webkit-scrollbar {
