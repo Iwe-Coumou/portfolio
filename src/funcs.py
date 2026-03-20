@@ -135,6 +135,8 @@ def block_to_blocktype(block: str) -> BlockType:
         return BlockType.U_List
     if all(line.startswith(f"{i}. ") for i, line in enumerate(block.split("\n"), 1)):
         return BlockType.O_LIST
+    if re.match(r'^<[a-zA-Z]', block) and re.search(r'</[a-zA-Z]+>$', block):
+        return BlockType.HTML
     return BlockType.PARAGRAPH
 
 def text_to_children(text: str) -> list[HTMLNode]:
@@ -167,6 +169,8 @@ def block_to_node(block: str, block_type: BlockType) -> HTMLNode:
             items = block.split("\n")
             li_nodes = [ParentNode(tag="li", children=text_to_children(item.split(". ", 1)[1])) for item in items]
             return ParentNode(tag='ol', children=li_nodes)
+        case BlockType.HTML:
+            return LeafNode(tag=None, value=block)
         case _:
             raise ValueError(f"Block type ({block_type}) not suported")
 

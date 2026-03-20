@@ -8,4 +8,5 @@ class BlockType(Enum):
     QUOTE = "quote"
     U_List = "u_list"
     O_LIST = "o_list"
+    HTML = "html"
     

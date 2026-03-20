@@ -43,3 +43,9 @@ func main() {
 ## Links
 
 Here is an [inline link](https://github.com) and another [one with a longer label](https://boot.dev).
+
+## HTML pass through
+
+<div style="color: red;">
+  <p>This is raw HTML</p>
+</div>
