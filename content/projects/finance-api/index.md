@@ -2,7 +2,7 @@
 
 A full portfolio analytics stack built around a FastAPI backend, TimescaleDB for time-series storage, Redis for caching, and Grafana as the frontend dashboard.
 
-**GitHub:** [Iwe-Coumou/finance-backend](https://github.com/Iwe-Coumou/finance-api)
+**GitHub:** [Iwe-Coumou/finance-backend](https://github.com/Iwe-Coumou/finance-backend)
 
 <div id="repo-finance-backend"></div>
 <script>
@@ -11,7 +11,7 @@ fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
   .then(data => {
     const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
     const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
-    document.getElementById("repo-finance-api").innerHTML = `
+    document.getElementById("repo-finance-backend").innerHTML = `
       <p>${data.description}</p>
       <p>🗣 ${data.language} · 🕒 Updated ${updated}</p>
       <div>${topics}</div>
