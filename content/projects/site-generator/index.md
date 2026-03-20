@@ -21,16 +21,6 @@ fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
   });
 </script>
 
-<div id="repo-info-portfolio"></div>
-<script>
-fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
-  .then(r => r.json())
-  .then(data => {
-    document.getElementById("repo-info-portfolio").innerHTML = 
-      `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks`;
-  });
-</script>
-
 ## What it does
 
 - Parses Markdown into an internal node tree (inline and block elements)

@@ -19,16 +19,6 @@ fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
   });
 </script>
 
-<div id="repo-info-finance-backend"></div>
-<script>
-fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
-  .then(r => r.json())
-  .then(data => {
-    document.getElementById("repo-info-finance-backend").innerHTML = 
-      `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks`;
-  });
-</script>
-
 ## Stack
 
 - **API** — FastAPI (Python)
