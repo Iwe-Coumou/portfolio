@@ -217,7 +217,7 @@ def extract_title(markdown: str) -> str:
             return block.lstrip("#").strip()
     raise ValueError(f"No h1 title found")
 
-def generate_page(from_path: str, template_path: str, dest_path: str):
+def generate_page(from_path: str, template_path: str, dest_path: str, basepath: str):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
     
     with open(from_path, "r") as f:
@@ -225,22 +225,17 @@ def generate_page(from_path: str, template_path: str, dest_path: str):
     with open(template_path, "r") as f:
         template = f.read()
         
-    node = markdown_to_html_node(content)
-    # for i, child in enumerate(node.children):
-    #     print(f"Child {i}: {child}")
-    #     if hasattr(child, 'children') and child.children:
-    #         for j, grandchild in enumerate(child.children):
-    #             print(f"  Grandchild {i}.{j}: {grandchild}")
-    html_str = node.to_html()
+    html_str = markdown_to_html_node(content).to_html()
     title = extract_title(content)
     
     final_html = template.replace("{{ Title }}", title).replace("{{ Content }}", html_str)
+    final_html = final_html.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
     
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w") as f:
         f.write(final_html)
 
-def generate_pages(from_dir: str, template_path: str, dest_dir: str):
+def generate_pages(from_dir: str, template_path: str, dest_dir: str, basepath: str):
     if not os.path.exists(from_dir):
         print(f"Directory ({from_dir}) does not exist")
         return
@@ -250,6 +245,6 @@ def generate_pages(from_dir: str, template_path: str, dest_dir: str):
         full_dest = os.path.join(dest_dir, item)
         if os.path.isfile(full_src) and item.endswith(".md"):
             dest_name = item.replace(".md", ".html")
-            generate_page(full_src, template_path, os.path.join(dest_dir, dest_name))
+            generate_page(full_src, template_path, os.path.join(dest_dir, dest_name), basepath)
         if os.path.isdir(full_src):
-            generate_pages(full_src, template_path, full_dest)
+            generate_pages(full_src, template_path, full_dest, basepath)
