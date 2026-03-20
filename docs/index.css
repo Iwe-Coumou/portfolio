@@ -127,6 +127,7 @@ blockquote {
 img {
   max-width: 50%;
   height: auto;
+  border-color: var(--accent);
 }
 
 [id^="repo-info"] {
@@ -183,4 +184,9 @@ nav a:hover {
 
 ::-webkit-scrollbar-corner {
   background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
 }
