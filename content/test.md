@@ -38,7 +38,7 @@ func main() {
 
 ## Image
 
-![JRR Tolkien sitting](/images/tolkien.png)
+![Boot.dev Certificate](/images/bootdev_certificate.png)
 
 ## Links
 
