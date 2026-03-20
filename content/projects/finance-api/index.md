@@ -1,7 +1,7 @@
 # Portfolio Analytics Backend
 
 <div style="text-align: right;">
-  <a href="/projects/site-generator">Next: Site generator that powers this portfolio →</a>
+  <a href="/projects/site-generator">Next: Static Site Generator →</a>
 </div>
 
 **GitHub:** [Iwe-Coumou/finance-backend](https://github.com/Iwe-Coumou/finance-backend)

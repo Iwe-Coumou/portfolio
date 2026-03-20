@@ -114,6 +114,7 @@ blockquote {
   padding: 2px 8px;
   font-size: 0.8em;
   margin: 2px;
+  border: 1px solid var(--accent)
 }
 
 .repo-card {
