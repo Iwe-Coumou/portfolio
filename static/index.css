@@ -78,6 +78,7 @@ ol {
 code {
   background-color: var(--bg-card);
   border-radius: 6px;
+  border-left: 4px solid var(--accent);
   color: var(--accent);
   padding: 0.4em 0.6em;
   font-family: "Courier New", monospace;
