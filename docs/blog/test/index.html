@@ -20,11 +20,19 @@
       <a href="/portfolio/blog">Blog</a>
       <a href="/portfolio/contact">Contact</a>
     </nav>
-    <div class="post-meta">
-      <span>March 5th 2026</span>
-      <span>finance, databases, python</span>
-    </div>
-    <article><div><h2>Blog Post Title</h2><p>*content here*</p></div></article>
+    <article>
+      <h1>Blog Post Title</h1>
+      <div class="post-meta">
+        <span class="post-date">📅 March 5th 2026</span>
+        <div class="post-tags"></div>
+      </div>
+      <script>
+        const tags = "finance, databases, python".split(",").map(t => t.trim());
+        const container = document.querySelector(".post-tags");
+        container.innerHTML = tags.map(t => `<span class="topic">${t}</span>`).join(" ");
+      </script>
+      <div><h2>Blog Post Title</h2><p>*content here*</p></div>
+    </article>
     <div class="page-nav">
       <a href="/portfolio/blog">← Back to Blog</a>
       <a href="/portfolio/blog">Back to Blog →</a>
