@@ -1,9 +1,5 @@
-# Contact the Author
+# Contact
 
-[< Back Home](/)
-
-Give me a call anytime to chat about Tolkien!
-
-`555-555-5555`
-
-**"Váya márië."**
+- **GitHub** — [Iwe-Coumou](https://github.com/Iwe-Coumou)
+- **Email** — [i.coumou@outlook.com](mailto:i.coumou@outlook.com)
+- **LinkedIn** — [Iwe Coumou](https://linkedin.com/in/Iwe-Coumou)
