@@ -1,8 +1,9 @@
-from textnode import TextNode, TextType
+from funcs import copy_content
+import os
 
 def main():
-    node = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
-    print(node)
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    copy_content(os.path.join(root, "static"), os.path.join(root, "public"))
 
 if __name__ == "__main__":
     main()

@@ -4,6 +4,8 @@ from htmlnode import HTMLNode
 from blocks import BlockType
 from parentnode import ParentNode
 import re
+import os
+import shutil
 
 def text_node_to_html_node(text_node: TextNode):
     match text_node.text_type:
@@ -183,3 +185,26 @@ def markdown_to_html_node(markdown: str) -> ParentNode:
         children.append(block_node)
     return ParentNode(tag="div", children=children)
     
+    
+def copy_content(src: str, dest: str) -> None:
+    src = os.path.abspath(src)
+    dest = os.path.abspath(dest)
+    
+    
+    if not os.path.exists(src):
+        raise ValueError(f"Source ({src}) does not exist")
+    if os.path.exists(dest):
+        shutil.rmtree(dest)
+        print(f"Deleted tree at {dest}")
+    if not os.path.exists(dest):
+        os.mkdir(dest)
+        print(f"Created directory {dest}")
+    
+    for path in os.listdir(src):
+        src_path = os.path.join(src, path)
+        dest_path = os.path.join(dest, path)
+        if os.path.isfile(src_path):
+            shutil.copy(src_path, dest_path)
+            print(f"Copied {src_path} -> {dest_path}")
+        if os.path.isdir(src_path):
+            copy_content(src_path, dest_path)
