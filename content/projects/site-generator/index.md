@@ -27,7 +27,7 @@ fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
   .then(r => r.json())
   .then(data => {
     document.getElementById("repo-info-portfolio").innerHTML = 
-      `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks · 🗣 ${data.language}`;
+      `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks`;
   });
 </script>
 
