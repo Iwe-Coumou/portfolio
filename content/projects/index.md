@@ -10,7 +10,8 @@ A selection of things I've built. Most of my work lives on [GitHub](https://gith
 ## Featured
 
 <div class="project-card">
-  <div class="project-card-content">
+    <img src="/images/financial_data.png" alt="Financial Data Illustration" class="project-card-image" />
+    <div class="project-card-content">
     <h3><a href="/projects/finance-backend">Portfolio Analytics Backend</a></h3>
     <p>FastAPI backend for portfolio analytics — TimescaleDB for time-series storage, Redis caching, and FRED macroeconomic data ingestion.</p>
     <div>

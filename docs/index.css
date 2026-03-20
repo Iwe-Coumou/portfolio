@@ -114,6 +114,15 @@ blockquote {
   font-size: 0.85em;
 }
 
+.project-card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  border: none;
+  margin-bottom: 12px;
+}
+
 .post-meta {
   display: flex;
   flex-direction: column;
