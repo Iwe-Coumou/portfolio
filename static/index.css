@@ -99,6 +99,13 @@ img {
   border: 1px solid #fbbf24;
 }
 
+@media (max-width: 600px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 nav {
   padding: 16px 0;
   margin-bottom: 32px;
