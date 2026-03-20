@@ -1,5 +1,9 @@
 # Portfolio Site & Static Site Generator
 
+<div style="text-align: right;">
+  <a href="/projects">← Back to projects</a>
+</div>
+
 **GitHub:** [Iwe-Coumou/portfolio](https://github.com/Iwe-Coumou/portfolio)
 
 **Live site:** [iwe-coumou.github.io/portfolio](https://iwe-coumou.github.io/portfolio/)
