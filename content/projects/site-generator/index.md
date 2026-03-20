@@ -1,7 +1,5 @@
 # Portfolio Site & Static Site Generator
 
-A static site generator built from scratch in Python that powers this portfolio. It parses Markdown files into an HTML node tree and generates a complete static site, deployed to GitHub Pages.
-
 **GitHub:** [Iwe-Coumou/portfolio](https://github.com/Iwe-Coumou/portfolio)
 
 **Live site:** [iwe-coumou.github.io/portfolio](https://iwe-coumou.github.io/portfolio/)

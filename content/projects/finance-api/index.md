@@ -1,7 +1,5 @@
 # Portfolio Analytics Backend
 
-A full portfolio analytics stack built around a FastAPI backend, TimescaleDB for time-series storage, Redis for caching, and Grafana as the frontend dashboard.
-
 **GitHub:** [Iwe-Coumou/finance-backend](https://github.com/Iwe-Coumou/finance-backend)
 
 <div id="repo-finance-backend"></div>
