@@ -104,6 +104,7 @@ nav {
   margin-bottom: 32px;
   border-bottom: 1px solid #1e2a4a;
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
@@ -118,7 +119,7 @@ nav a:hover {
   color: #fbbf24;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   body {
     padding: 12px;
   }
