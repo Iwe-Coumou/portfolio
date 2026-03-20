@@ -2,14 +2,29 @@
 
 A full portfolio analytics stack built around a FastAPI backend, TimescaleDB for time-series storage, Redis for caching, and Grafana as the frontend dashboard.
 
-**GitHub:** [Iwe-Coumou/finance-api](https://github.com/Iwe-Coumou/finance-api)
+**GitHub:** [Iwe-Coumou/finance-backend](https://github.com/Iwe-Coumou/finance-api)
 
-<div id="repo-info-portfolio"></div>
+<div id="repo-finance-backend"></div>
 <script>
 fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
   .then(r => r.json())
   .then(data => {
-    document.getElementById("repo-info-portfolio").innerHTML = 
+    const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
+    const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+    document.getElementById("repo-finance-api").innerHTML = `
+      <p>${data.description}</p>
+      <p>🗣 ${data.language} · 🕒 Updated ${updated}</p>
+      <div>${topics}</div>
+    `;
+  });
+</script>
+
+<div id="repo-info-finance-backend"></div>
+<script>
+fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("repo-info-finance-backend").innerHTML = 
       `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks · 🗣 ${data.language}`;
   });
 </script>

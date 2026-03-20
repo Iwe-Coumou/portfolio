@@ -92,6 +92,16 @@ blockquote {
   font-style: italic;
 }
 
+.topic {
+  display: inline-block;
+  background-color: #1e2a4a;
+  color: #b0c4de;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  margin: 2px;
+}
+
 img {
   max-width: 50%;
   height: auto;

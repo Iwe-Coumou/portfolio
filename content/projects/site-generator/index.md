@@ -6,6 +6,21 @@ A static site generator built from scratch in Python that powers this portfolio.
 
 **Live site:** [iwe-coumou.github.io/portfolio](https://iwe-coumou.github.io/portfolio/)
 
+<div id="repo-portfolio"></div>
+<script>
+fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
+  .then(r => r.json())
+  .then(data => {
+    const updated = new Date(data.updated_at).toLocaleDateString("en-GB", {year: "numeric", month: "short"});
+    const topics = data.topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+    document.getElementById("repo-portfolio").innerHTML = `
+      <p>${data.description}</p>
+      <p>🗣 ${data.language} · 🕒 Updated ${updated}</p>
+      <div>${topics}</div>
+    `;
+  });
+</script>
+
 <div id="repo-info-portfolio"></div>
 <script>
 fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
