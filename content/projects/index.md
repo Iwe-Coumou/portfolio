@@ -1,0 +1,8 @@
+# Projects
+
+A selection of things I've built. Most of my work lives on [GitHub](https://github.com/Iwe-Coumou).
+
+## Featured
+
+- [Portfolio Analytics Backend](/projects/finance-api) — FastAPI, TimescaleDB, Redis, Grafana
+- [Static Site Generator](/projects/static-site-generator) — this site, built from scratch in Python
