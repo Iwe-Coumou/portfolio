@@ -5,8 +5,6 @@
 - **Python** — primary language, used for data pipelines, APIs, ML, scripting
 - **SQL** — PostgreSQL, TimescaleDB, query optimization
 - **C** — systems programming, low-level work
-- **Rust** — learning, low-level and embedded interest
-- **Bash** — scripting, automation
 
 ## Systems & Infrastructure
 
