@@ -132,7 +132,7 @@ def block_to_blocktype(block: str) -> BlockType:
         return BlockType.CODE
     if all([line.startswith(">") for line in block.split("\n")]):
         return BlockType.QUOTE
-    if all([line.startswith(" -") for line in block.split("\n")]):
+    if all([line.startswith("- ") for line in block.split("\n")]):
         return BlockType.U_List
     if all(line.startswith(f"{i}. ") for i, line in enumerate(block.split("\n"), 1)):
         return BlockType.O_LIST
@@ -161,8 +161,9 @@ def block_to_node(block: str, block_type: BlockType) -> HTMLNode:
             return text_node_to_html_node(TextNode(text=block.split("\n", 1)[1].rsplit("\n", 1)[0], text_type=TextType.CODE))
         case BlockType.QUOTE:
             items = block.split("\n")
-            line_nodes = [ParentNode(tag='p', children=text_to_children(item[1:].strip())) for item in items]
-            return ParentNode(tag='blockquote', children=line_nodes)
+            filtered = [item[1:].strip() for item in items if item[1:].strip() != ""]
+            children = text_to_children(" ".join(filtered))
+            return ParentNode(tag='blockquote', children=children)
         case BlockType.U_List:
             items = block.split("\n")
             li_nodes = [ParentNode(tag="li", children=text_to_children(item[2:])) for item in items]
@@ -208,3 +209,47 @@ def copy_content(src: str, dest: str) -> None:
             print(f"Copied {src_path} -> {dest_path}")
         if os.path.isdir(src_path):
             copy_content(src_path, dest_path)
+
+def extract_title(markdown: str) -> str:
+    blocks = markdown_to_blocks(markdown)
+    for block in blocks:
+        if block_to_blocktype(block) == BlockType.HEADING and block.startswith("# "):
+            return block.lstrip("#").strip()
+    raise ValueError(f"No h1 title found")
+
+def generate_page(from_path: str, template_path: str, dest_path: str):
+    print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+    
+    with open(from_path, "r") as f:
+        content = f.read()
+    with open(template_path, "r") as f:
+        template = f.read()
+        
+    node = markdown_to_html_node(content)
+    # for i, child in enumerate(node.children):
+    #     print(f"Child {i}: {child}")
+    #     if hasattr(child, 'children') and child.children:
+    #         for j, grandchild in enumerate(child.children):
+    #             print(f"  Grandchild {i}.{j}: {grandchild}")
+    html_str = node.to_html()
+    title = extract_title(content)
+    
+    final_html = template.replace("{{ Title }}", title).replace("{{ Content }}", html_str)
+    
+    os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+    with open(dest_path, "w") as f:
+        f.write(final_html)
+
+def generate_pages(from_dir: str, template_path: str, dest_dir: str):
+    if not os.path.exists(from_dir):
+        print(f"Directory ({from_dir}) does not exist")
+        return
+        
+    for item in os.listdir(from_dir):
+        full_src = os.path.join(from_dir, item)
+        full_dest = os.path.join(dest_dir, item)
+        if os.path.isfile(full_src) and item.endswith(".md"):
+            dest_name = item.replace(".md", ".html")
+            generate_page(full_src, template_path, os.path.join(dest_dir, dest_name))
+        if os.path.isdir(full_src):
+            generate_pages(full_src, template_path, full_dest)
