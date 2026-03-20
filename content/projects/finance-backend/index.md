@@ -2,7 +2,7 @@
 template: project
 title: Portfolio Analytics Backend
 github: Iwe-Coumou/finance-backend
-next: projects/portfolio
+next: projects/site-generator
 next_label: Portfolio Site & Static Site Generator
 prev: projects
 prev_label: Back to Projects
