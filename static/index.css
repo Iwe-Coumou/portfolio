@@ -86,13 +86,13 @@ blockquote {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   padding-right: 0.5em;
-  color: #ddd;
+  color: #fbbf24;
   font-style: italic;
 }
 
 img {
   max-width: 50%;
-  height: 400px;
+  height: 250px;
   border-radius: 6px;
   border: 3px solid #fbbf24;
 }
