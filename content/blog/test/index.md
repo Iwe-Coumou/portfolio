@@ -7,6 +7,6 @@ prev: blog
 prev_label: Back to Blog
 ---
 
-# Blog Post Title
+## Blog Post Title
 
 *Coming soon.*
