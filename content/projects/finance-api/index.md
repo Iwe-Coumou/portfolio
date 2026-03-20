@@ -4,6 +4,16 @@ A full portfolio analytics stack built around a FastAPI backend, TimescaleDB for
 
 **GitHub:** [Iwe-Coumou/finance-api](https://github.com/Iwe-Coumou/finance-api)
 
+<div id="repo-info-portfolio"></div>
+<script>
+fetch("https://api.github.com/repos/Iwe-Coumou/finance-api")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("repo-info-portfolio").innerHTML = 
+      `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks · 🗣 ${data.language}`;
+  });
+</script>
+
 ## Stack
 
 - **API** — FastAPI (Python)

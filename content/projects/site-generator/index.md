@@ -6,6 +6,16 @@ A static site generator built from scratch in Python that powers this portfolio.
 
 **Live site:** [iwe-coumou.github.io/portfolio](https://iwe-coumou.github.io/portfolio/)
 
+<div id="repo-info-portfolio"></div>
+<script>
+fetch("https://api.github.com/repos/Iwe-Coumou/portfolio")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("repo-info-portfolio").innerHTML = 
+      `⭐ ${data.stargazers_count} stars · 🍴 ${data.forks_count} forks · 🗣 ${data.language}`;
+  });
+</script>
+
 ## What it does
 
 - Parses Markdown into an internal node tree (inline and block elements)

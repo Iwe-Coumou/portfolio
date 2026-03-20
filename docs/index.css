@@ -97,6 +97,12 @@ img {
   height: auto;
 }
 
+[id^="repo-info"] {
+  font-size: 0.85em;
+  color: #b0c4de;
+  margin-bottom: 16px;
+}
+
 @media (max-width: 900px) {
   img {
     max-width: 100%;
