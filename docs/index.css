@@ -97,6 +97,25 @@ img {
   border: 3px solid #fbbf24;
 }
 
+nav {
+  padding: 16px 0;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #1e2a4a;
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  border-bottom: none;
+  font-size: 0.95em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  color: #fbbf24;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
