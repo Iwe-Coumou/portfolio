@@ -3,11 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portfolio Analytics Backend</title>
+    <title>Portfolio Analytics Backend | Iwe Coumou</title>
     <link href="/portfolio/index.css" rel="stylesheet" />
   </head>
 
   <body>
+    <nav>
+      <a href="/portfolio/">Home</a>
+      <a href="/portfolio/about">About</a>
+      <a href="/portfolio/projects">Projects</a>
+      <a href="/portfolio/skills">Skills</a>
+      <a href="/portfolio/contact">Contact</a>
+    </nav>
     <article><div><h1>Portfolio Analytics Backend</h1><p>A full portfolio analytics stack built around a FastAPI backend, TimescaleDB for time-series storage, Redis for caching, and Grafana as the frontend dashboard.</p><p><b>GitHub:</b> <a href="https://github.com/Iwe-Coumou/finance-api">Iwe-Coumou/finance-api</a></p><h2>Stack</h2><ul><li><b>API</b> — FastAPI (Python)</li><li><b>Database</b> — TimescaleDB (PostgreSQL extension for time-series)</li><li><b>Cache</b> — Redis</li><li><b>Dashboard</b> — Grafana connected directly to TimescaleDB</li><li><b>Infrastructure</b> — Docker Compose</li></ul><h2>What it does</h2><ul><li>Ingests macroeconomic data from FRED (yield curve, credit spreads, CPI, VIX, inflation expectations)</li><li>Stores and serves portfolio position and performance data</li><li>Exposes clean JSON endpoints — all calculations happen in the backend</li><li>Grafana dashboards use variable substitution for dynamic ticker filtering</li></ul><h2>Key decisions</h2><ul><li>Unified tables with <code>region</code>, <code>frequency</code>, and <code>source</code> columns rather than separate regional tables</li><li>All business logic lives in the backend, Grafana is purely for visualization</li><li>TimescaleDB hypertables for efficient time-series queries</li></ul></div></article>
+    <footer>
+      <a href="https://github.com/Iwe-Coumou">GitHub</a>
+    </footer>
   </body>
 </html>
