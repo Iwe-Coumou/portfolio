@@ -1,7 +1,8 @@
 # Portfolio Site & Static Site Generator
 
-<div style="text-align: right;">
-  <a href="/projects">← Back to projects</a>
+<div style="display: flex; justify-content: space-between;">
+  <a href="/projects/finance-api">← Previous: Portfolio Analytics Backend</a>
+  <a href="/projects">Back to projects</a>
 </div>
 
 **GitHub:** [Iwe-Coumou/portfolio](https://github.com/Iwe-Coumou/portfolio)
