@@ -93,10 +93,14 @@ blockquote {
 }
 
 img {
-  max-width: clamp(200px, 50vw, 400px);
+  max-width: 50%;
   height: auto;
-  border-radius: 4px;
-  border: 1px solid #fbbf24;
+}
+
+@media (max-width: 900px) {
+  img {
+    max-width: 100%;
+  }
 }
 
 nav {
