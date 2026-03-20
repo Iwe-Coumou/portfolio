@@ -80,6 +80,13 @@ pre {
   overflow: auto;
 }
 
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
 blockquote {
   background-color: #111827;
   border-left: 4px solid #fbbf24;
