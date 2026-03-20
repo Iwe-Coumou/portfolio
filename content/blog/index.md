@@ -9,5 +9,4 @@ Occasional writing on quant finance, systems programming, and things I'm buildin
 
 ## Posts
 
-- [Why TimescaleDB for Financial Time-Series](/blog/timescaledb)
-- [Building a Static Site Generator from Scratch](/blog/static-site-generator)
+- [Test blog](/blog/test)
