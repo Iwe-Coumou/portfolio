@@ -23,7 +23,8 @@
     <article>
       <h1>Projects</h1>
       <p><div><p>A selection of things I've built. Most of my work lives on <a href="https://github.com/Iwe-Coumou">GitHub</a>.</p><h2>Featured</h2></div></p>
-      <div class="project-card">
+      <input type="text" id="search" placeholder="Search..." />
+      <div id="collection"><div class="project-card">
   <div class="project-card-content">
     <h3><a href="/portfolio/projects/site-generator">Portfolio Site & Static Site Generator</a></h3>
     <p>Static Site Generator in Python</p>
@@ -51,7 +52,16 @@
       }
     </script>
   </div>
-</div>
+</div></div>
+      <script>
+        document.getElementById("search").addEventListener("input", function() {
+          const query = this.value.toLowerCase();
+          document.querySelectorAll(".project-card").forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(query) ? "block" : "none";
+          });
+        });
+      </script>
     </article>
   </body>
 </html>

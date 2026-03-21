@@ -114,6 +114,23 @@ blockquote {
   font-size: 0.85em;
 }
 
+#search {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 24px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+#search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
 .post-meta {
   display: flex;
   flex-direction: column;

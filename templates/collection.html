@@ -6,7 +6,17 @@
     <article>
       <h1>{{ title }}</h1>
       <p>{{ Content }}</p>
-      {{ collection }}
+      <input type="text" id="search" placeholder="Search..." />
+      <div id="collection">{{ collection }}</div>
+      <script>
+        document.getElementById("search").addEventListener("input", function() {
+          const query = this.value.toLowerCase();
+          document.querySelectorAll(".project-card").forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(query) ? "block" : "none";
+          });
+        });
+      </script>
     </article>
   </body>
 </html>
