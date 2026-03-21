@@ -22,17 +22,19 @@
     </nav>
     <article>
       <h1>Projects</h1>
-      <p><div><h1>Projects</h1><p>A selection of things I've built. Most of my work lives on <a href="https://github.com/Iwe-Coumou">GitHub</a>.</p><h2>Featured</h2></div></p>
+      <p><div><p>A selection of things I've built. Most of my work lives on <a href="https://github.com/Iwe-Coumou">GitHub</a>.</p><h2>Featured</h2></div></p>
       <div class="project-card">
   <div class="project-card-content">
     <h3><a href="/portfolio/projects/site-generator">Portfolio Site & Static Site Generator</a></h3>
     <p>Static Site Generator in Python</p>
     <div class="post-card-meta" id="topics-projects/site-generator-card"></div>
     <script>
+      {
       const id = "topics-projects/site-generator-card".replace("/", "-");
       const topics = "github-pages, markdown, portfolio, python, static-site-generator".split(",").map(t => t.trim());
       document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+      }
     </script>
   </div>
 </div><div class="project-card">
@@ -41,10 +43,12 @@
     <p>Backend with Timescaledb and Fastapi to Create Portfolio Analytics</p>
     <div class="post-card-meta" id="topics-projects/finance-backend-card"></div>
     <script>
+      {
       const id = "topics-projects/finance-backend-card".replace("/", "-");
       const topics = "docker, fastapi, finance, portfolio-analytics, postgresql, python, redis, timescaledb".split(",").map(t => t.trim());
       document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+      }
     </script>
   </div>
 </div>

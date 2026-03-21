@@ -1,7 +1,7 @@
 ---
 template: blog
 title: Building a Static Site Generator from Scratch
-date: March 21st 2026
+date: 2026-03-05
 tags: python, static-site-generator, markdown
 description: How I built the generator that powers this portfolio, from Markdown parsing to GitHub Pages deployment.
 next: blog

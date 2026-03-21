@@ -3,7 +3,11 @@
     <h3><a href="/{{ url }}">{{ title }}</a></h3>
     <p>{{ description }}</p>
     <div class="post-card-meta">
-      <span class="post-date">{{ date }}</span>
+      <span class="post-date" id="date-{{ url }}">{{ date }}</span>
     </div>
+    <script>
+      const el = document.getElementById("date-{{ url }}".replace("/", "-"));
+      el.textContent = new Date("{{ date }}").toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+    </script>
   </div>
 </div>

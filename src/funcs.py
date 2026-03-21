@@ -272,7 +272,7 @@ def collect_items(collection_dir: str) -> list[dict]:
             item_data = get_frontmatter(f.read())[0]
             item_data['url'] = f"{os.path.basename(collection_dir)}/{file_name.replace('.md', '')}"
             items.append(item_data)
-    return items
+    return sorted(items, key=lambda x: x.get("date", ""), reverse=True)
 
 def render_collection(items: list[dict], card_partial: str, partial_dir: str) -> str:
     card_template =  load_partial(card_partial, partial_dir)
