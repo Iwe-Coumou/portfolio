@@ -7,6 +7,7 @@ next_label: Back to Projects
 prev: projects/finance-backend
 prev_label: Portfolio Analytics Backend
 description: Static Site Generator in Python
+topics: github-pages markdown portfolio python static-site-generator
 ---
 
 ## What it does

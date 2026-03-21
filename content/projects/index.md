@@ -1,5 +1,5 @@
 ---
-template: default
+template: collection
 title: Projects
 collection: projects
 card: project-card
