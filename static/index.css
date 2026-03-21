@@ -114,16 +114,30 @@ blockquote {
   font-size: 0.85em;
 }
 
+.search-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-container::before {
+  content: "🔍";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9em;
+}
+
 #search {
   width: 100%;
-  padding: 8px 12px;
-  margin-bottom: 24px;
+  padding: 10px 12px 10px 36px;
   background-color: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 6px;
   color: var(--text-primary);
   font-size: 1em;
   box-sizing: border-box;
+  transition: border-color 0.2s;
 }
 
 #search:focus {

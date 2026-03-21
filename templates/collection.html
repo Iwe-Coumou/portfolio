@@ -6,7 +6,9 @@
     <article>
       <h1>{{ title }}</h1>
       <p>{{ Content }}</p>
-      <input type="text" id="search" placeholder="Search..." />
+      <div class="search-container">
+        <input type="text" id="search" placeholder="Search..." />
+      </div>
       <div id="collection">{{ collection }}</div>
       <script>
         document.getElementById("search").addEventListener("input", function() {
