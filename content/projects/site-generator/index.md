@@ -8,8 +8,6 @@ prev: projects/finance-backend
 prev_label: Portfolio Analytics Backend
 ---
 
-# Portfolio Site & Static Site Generator
-
 ## What it does
 
 - Parses Markdown into an internal node tree (inline and block elements)

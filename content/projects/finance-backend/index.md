@@ -8,9 +8,6 @@ prev: projects
 prev_label: Back to Projects
 ---
 
-# Portfolio Analytics Backend
-
-
 ## Stack
 
 - **API** — FastAPI (Python)

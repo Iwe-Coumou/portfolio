@@ -4,6 +4,7 @@
   <body>
     {% include "nav" %}
     {% include "page-nav" %}
+    <h1>{{ title }}</h1>
     <div id="repo-card"></div>
     <script>
     fetch("https://api.github.com/repos/{{ github }}")
