@@ -222,16 +222,63 @@ def get_frontmatter(content: str) -> tuple[dict, str]:
         frontmatter_dict[key] = value
     return frontmatter_dict, content
 
+def load_partial(partial_name: str, partial_dir: str) -> str:
+    partial_path = os.path.join(partial_dir, f"{partial_name}.html")
+    if not os.path.exists(partial_path):
+        raise ValueError(f"Partial ({partial_name}) does not exist")
+    with open(partial_path, 'r') as f:
+        return f.read()
+
 def insert_partials(template: str, partial_dir: str) -> str:
     matches = re.findall(r'\{% include "(\w[\w-]*)" %\}', template)
     for partial_name in matches:
-        partial_path = os.path.join(partial_dir, f"{partial_name}.html")
-        if not os.path.exists(partial_path):
-            raise ValueError(f"Partial ({partial_name}) does not exist")
-        with open(partial_path, 'r') as f:
-            partial_str = f.read()
+        partial_str = load_partial(partial_name, partial_dir)
         template = template.replace(f'{{% include "{partial_name}" %}}', partial_str)
     return template
+
+def load_template(template_dir: str, template_name: str) -> str:
+    template_path = os.path.join(template_dir, f"{template_name}.html")
+    if not os.path.exists(template_path):
+        raise ValueError(f"Template ({template_name}) does not exist")
+    with open(template_path, "r") as f:
+        return f.read()
+
+def validate_placeholders(template_str: str, metadata: dict):
+    placeholders = re.findall(r'\{\{ (\w+) \}\}', template_str)
+    for placeholder in placeholders:
+        if placeholder not in metadata and placeholder not in ("Content",):
+            raise ValueError(f"Missing frontmatter key: {placeholder}")
+
+def substitute_placeholders(template_str: str, metadata: dict, html_str: str, basepath: str) -> str:
+    for key, value in metadata.items():
+        template_str = template_str.replace("{{ " + key + " }}", value)
+    template_str = template_str.replace("{{ Content }}", html_str)
+    template_str = template_str.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
+    return re.sub(r'\{\{ \w+ \}\}', '', template_str)
+
+def substitute_values(template_str: str, values: dict) -> str:
+    for key, value in values.items():
+        template_str = template_str.replace("{{ " + key + " }}", value)
+    return template_str
+
+def collect_items(collection_dir: str) -> list[dict]:
+    items = []
+    for file_name in os.listdir(collection_dir):
+        if file_name == "index.md" or not file_name.endswith(".md"):
+            continue
+        path = os.path.join(collection_dir, file_name)
+        with open(path, 'r') as f:
+            item_data = get_frontmatter(f.read())[0]
+            item_data['url'] = f"{os.path.basename(collection_dir)}/{file_name.replace('.md', '')}"
+            items.append(item_data)
+    return items
+
+def render_collection(items: list[dict], card_partial: str, partial_dir: str) -> str:
+    card_template =  load_partial(card_partial, partial_dir)
+    cards = []
+    for item in items:
+        cards.append(substitute_values(card_template, item))
+    return "".join(cards)
 
 def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: str, partial_dir_path: str):
     with open(from_path, "r") as f:
@@ -240,31 +287,21 @@ def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: s
     metadata, content = get_frontmatter(content)
     html_str = markdown_to_html_node(content).to_html()
     
-    template = metadata.get("template") or "default"
+    template_name = metadata.get("template") or "default"
+    print(f"Generating page from {from_path} to {dest_path} using {template_name}")
     
-    template_path = os.path.join(template_dir, f"{template}.html")
-    if not os.path.exists(template_path):
-        raise ValueError(f"Template ({template}) does not exist")
+    template_str = load_template(template_dir, template_name)
     
-    print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+    if template_name == "collection":
+        items = collect_items(os.path.dirname(from_path))
+        collection_str = render_collection(items, metadata.get("card"), partial_dir_path)
+        template_str = template_str.replace("{{ collection }}", collection_str)
     
-    with open(template_path, "r") as f:
-        template_str = f.read()
-    
-    if os.path.exists(partial_dir_path):  
-        template_str = insert_partials(template_str, partial_dir_path)
+    template_str = insert_partials(template_str, partial_dir_path)
         
-    placeholders = re.findall(r'\{\{ (\w+) \}\}', template_str)
-    for placeholder in placeholders:
-        if placeholder not in metadata and placeholder not in ("Content",):
-            raise ValueError(f"Missing frontmatter key: {placeholder} in {from_path}")
+    validate_placeholders(template_str, metadata)
         
-    for key, value in metadata.items():
-        template_str = template_str.replace("{{ " + key + " }}", value)
-    
-    final_html = template_str.replace("{{ Content }}", html_str)
-    final_html = final_html.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
-    final_html = re.sub(r'\{\{ \w+ \}\}', '', final_html)
+    final_html = substitute_placeholders(template_str, metadata, html_str, basepath)
     
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w") as f:

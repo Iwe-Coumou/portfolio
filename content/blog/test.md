@@ -7,6 +7,8 @@ prev: blog
 prev_label: Back to Blog
 date: March 5th 2026
 tags: finance, databases, python
+collection: blog
+description: Blog post to test functionality
 ---
 
 *content here*

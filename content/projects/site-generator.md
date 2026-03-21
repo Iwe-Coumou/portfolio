@@ -6,6 +6,7 @@ next: projects
 next_label: Back to Projects
 prev: projects/finance-backend
 prev_label: Portfolio Analytics Backend
+description: Static Site Generator in Python
 ---
 
 ## What it does

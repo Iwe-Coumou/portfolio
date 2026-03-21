@@ -6,6 +6,7 @@ next: projects/site-generator
 next_label: Portfolio Site & Static Site Generator
 prev: projects
 prev_label: Back to Projects
+description: Backend with Timescaledb and Fastapi to Create Portfolio Analytics
 ---
 
 ## Stack
