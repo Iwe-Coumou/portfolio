@@ -1,7 +1,7 @@
 ---
 template: blog
 title: Why TimescaleDB for Financial Time-Series
-date: 2026-04-05
+date: 05-04-2026
 tags: finance, databases, python
 description: Exploring why TimescaleDB is a natural fit for storing and querying financial time-series data.
 next: blog/static-site-generator

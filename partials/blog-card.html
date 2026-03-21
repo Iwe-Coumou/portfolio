@@ -6,8 +6,8 @@
       <span class="post-date" id="date-{{ url }}">{{ date }}</span>
     </div>
     <script>
-      const el = document.getElementById("date-{{ url }}".replace("/", "-"));
-      el.textContent = new Date("{{ date }}").toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      const date = new Date("{{ date }}".split("-").reverse().join("-"));
+      el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
     </script>
   </div>
 </div>

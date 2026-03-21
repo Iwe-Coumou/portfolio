@@ -3,6 +3,7 @@ from leafnode import LeafNode
 from htmlnode import HTMLNode
 from blocks import BlockType
 from parentnode import ParentNode
+from datetime import datetime
 import re
 import os
 import shutil
@@ -272,7 +273,7 @@ def collect_items(collection_dir: str) -> list[dict]:
             item_data = get_frontmatter(f.read())[0]
             item_data['url'] = f"{os.path.basename(collection_dir)}/{file_name.replace('.md', '')}"
             items.append(item_data)
-    return sorted(items, key=lambda x: x.get("date", ""), reverse=True)
+    return sorted(items, key=lambda x: datetime.strptime(x.get("date", "01-01-2000"), "%d-%m-%Y"), reverse=True)
 
 def render_collection(items: list[dict], card_partial: str, partial_dir: str) -> str:
     card_template =  load_partial(card_partial, partial_dir)
