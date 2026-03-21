@@ -30,6 +30,7 @@
   <div class="project-card-content">
     <h3><a href="/portfolio/blog/timescaledb">Why TimescaleDB for Financial Time-Series</a></h3>
     <p>Exploring why TimescaleDB is a natural fit for storing and querying financial time-series data.</p>
+    <span style="display:none">finance, databases, python</span>
     <div class="post-card-meta">
       <span class="post-date" id="date-blog/timescaledb">05-04-2026</span>
     </div>
@@ -43,14 +44,18 @@
       }
     </script>
     <script>
-      const date = new Date("05-04-2026".split("-").reverse().join("-"));
-      el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      {
+        const el = document.getElementById("date-blog/timescaledb".replace("/", "-"));
+        const date = new Date("05-04-2026".split("-").reverse().join("-"));
+        el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      }
     </script>
   </div>
 </div><div class="project-card">
   <div class="project-card-content">
     <h3><a href="/portfolio/blog/test">Blog Post Title</a></h3>
     <p>Blog post to test functionality</p>
+    <span style="display:none">finance, databases, python</span>
     <div class="post-card-meta">
       <span class="post-date" id="date-blog/test">05-03-2026</span>
     </div>
@@ -59,19 +64,23 @@
       {
         const containers = document.querySelectorAll(".topics-container");
         const container = containers[containers.length - 1];
-        const topics = "finance, dagabases, python, test".split(",").map(t => t.trim());
+        const topics = "finance, databases, python".split(",").map(t => t.trim());
         container.innerHTML = topics.map(t => `<span class="topic">${t}</span>`).join(" ");
       }
     </script>
     <script>
-      const date = new Date("05-03-2026".split("-").reverse().join("-"));
-      el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      {
+        const el = document.getElementById("date-blog/test".replace("/", "-"));
+        const date = new Date("05-03-2026".split("-").reverse().join("-"));
+        el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      }
     </script>
   </div>
 </div><div class="project-card">
   <div class="project-card-content">
     <h3><a href="/portfolio/blog/static-site-generator">Building a Static Site Generator from Scratch</a></h3>
     <p>How I built the generator that powers this portfolio, from Markdown parsing to GitHub Pages deployment.</p>
+    <span style="display:none">python, static-site-generator, markdown</span>
     <div class="post-card-meta">
       <span class="post-date" id="date-blog/static-site-generator">05-03-2026</span>
     </div>
@@ -85,8 +94,11 @@
       }
     </script>
     <script>
-      const date = new Date("05-03-2026".split("-").reverse().join("-"));
-      el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      {
+        const el = document.getElementById("date-blog/static-site-generator".replace("/", "-"));
+        const date = new Date("05-03-2026".split("-").reverse().join("-"));
+        el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
+      }
     </script>
   </div>
 </div></div>

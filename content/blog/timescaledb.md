@@ -8,7 +8,6 @@ next: blog/static-site-generator
 next_label: Building a Static Site Generator
 prev: blog
 prev_label: Back to Blog
-topics: finance, databases, python
 ---
 
 TimescaleDB is a PostgreSQL extension that adds native time-series capabilities to a database you probably already know. Here's why I chose it for my portfolio analytics backend.
