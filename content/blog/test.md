@@ -11,4 +11,4 @@ collection: blog
 description: Blog post to test functionality
 ---
 
-*content here*
+**content here**

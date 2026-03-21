@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog Post Title | Iwe Coumou</title>
+    <title>Why TimescaleDB for Financial Time-Series | Iwe Coumou</title>
     <link href="/portfolio/index.css" rel="stylesheet" />
     <link rel="apple-touch-icon" sizes="180x180" href="/portfolio/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/portfolio/images/favicon-32x32.png">
@@ -21,7 +21,7 @@
       <a href="/portfolio/contact">Contact</a>
     </nav>
     <article>
-      <h1>Blog Post Title</h1>
+      <h1>Why TimescaleDB for Financial Time-Series</h1>
       <div class="post-meta">
         <div class="post-tags"></div>
         <span class="post-date">March 5th 2026</span>
@@ -31,11 +31,14 @@
         const container = document.querySelector(".post-tags");
         container.innerHTML = tags.map(t => `<span class="topic">${t}</span>`).join(" ");
       </script>
-      <div><p><b>content here</b></p></div>
+      <div><p>TimescaleDB is a PostgreSQL extension that adds native time-series capabilities to a database you probably already know. Here's why I chose it for my portfolio analytics backend.</p><h2>The Problem with Regular PostgreSQL</h2><p>Storing time-series data in a regular PostgreSQL table works fine at small scale. But as your dataset grows, queries like "give me the closing price of AAPL for every day in the last 5 years" get slow fast. Standard indexes aren't optimized for time-based range queries.</p><h2>What TimescaleDB Adds</h2><p>The core concept is <b>hypertables</b> — tables that are automatically partitioned by time under the hood. You interact with them like normal tables but queries over time ranges are dramatically faster.</p><code>SELECT time, value FROM prices
+WHERE ticker = 'AAPL'
+AND time > NOW() - INTERVAL '1 year'
+ORDER BY time DESC;</code><h2>Why It Fits Financial Data</h2><ul><li>Tick data, OHLCV, and macro indicators are all naturally time-ordered</li><li>Continuous aggregates let you precompute daily/weekly summaries</li><li>Works with every PostgreSQL tool you already use — no new query language</li></ul></div>
     </article>
     <div class="page-nav">
       <a href="/portfolio/blog">← Back to Blog</a>
-      <a href="/portfolio/blog">Back to Blog →</a>
+      <a href="/portfolio/blog/static-site-generator">Building a Static Site Generator →</a>
     </div>
   </body>
 </html>

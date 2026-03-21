@@ -9,9 +9,9 @@ class TextType(Enum):
     IMAGE = 'image'
     
 DELIMITERS = {
+    TextType.CODE: '`',
     TextType.BOLD: '**',
     TextType.ITALIC: '_',
-    TextType.CODE: '`'
 }
     
 class TextNode:

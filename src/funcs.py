@@ -16,7 +16,7 @@ def text_node_to_html_node(text_node: TextNode):
         case TextType.ITALIC:
             return ParentNode(tag="i", children=parse_inline(text_node.text))
         case TextType.CODE:
-            return ParentNode(tag="code", children=parse_inline(text_node.text))
+            return LeafNode(tag="code", value=text_node.text)
         case TextType.LINK:
             return LeafNode(tag="a", value=text_node.text, props={"href": text_node.url})
         case TextType.IMAGE:
@@ -33,7 +33,8 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
         
         split_text = node.text.split(delimiter)
         if len(split_text) % 2 == 0:
-            raise Exception(f"There was a delimiter that was not closed")
+            print(f"Problematic text: {node.text!r}")
+            raise Exception(f"There was a delimiter that was not closed: '{delimiter}'")
         
         nodes = []
         is_text = True
@@ -145,7 +146,7 @@ def text_to_children(text: str) -> list[HTMLNode]:
 def block_to_node(block: str, block_type: BlockType) -> HTMLNode:
     match block_type:
         case BlockType.PARAGRAPH:
-            return ParentNode(tag="p", children=text_to_children(block))
+            return ParentNode(tag="p", children=text_to_children(block.replace("\n", " ")))
         case BlockType.HEADING:
             count = 0
             for char in block:
