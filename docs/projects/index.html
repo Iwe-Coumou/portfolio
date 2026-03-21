@@ -1,25 +1,8 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Projects | Iwe Coumou</title>
-    <link href="/portfolio/index.css" rel="stylesheet" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/portfolio/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/portfolio/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/portfolio/images/favicon-16x16.png">
-  </head>
+  {% include "head"%}
   <body>
-    <nav>
-      <img src="/portfolio/images/favicon-32x32.png" alt="logo" />
-      <a href="/portfolio/">Home</a>
-      <a href="/portfolio/about">About</a>
-      <a href="/portfolio/education">Education</a>
-      <a href="/portfolio/projects">Projects</a>
-      <a href="/portfolio/skills">Skills</a>
-      <a href="/portfolio/blog">Blog</a>
-      <a href="/portfolio/contact">Contact</a>
-    </nav>
+    {% include "nav"%}
     <article><div><h1>Projects</h1><p>A selection of things I've built. Most of my work lives on <a href="https://github.com/Iwe-Coumou">GitHub</a>.</p><h2>Featured</h2><div class="project-card">
     <div class="project-card-content">
     <h3><a href="/portfolio/projects/finance-backend">Portfolio Analytics Backend</a></h3>

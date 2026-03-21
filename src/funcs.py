@@ -222,7 +222,18 @@ def get_frontmatter(content: str) -> tuple[dict, str]:
         frontmatter_dict[key] = value
     return frontmatter_dict, content
 
-def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: str):
+def insert_partials(template: str, partial_dir: str) -> str:
+    matches = re.findall(r'\{% include "(\w+)" %\}', template)
+    for partial_name in matches:
+        partial_path = os.path.join(partial_dir, f"{partial_name}.html")
+        if not os.path.exists(partial_path):
+            raise ValueError(f"Partial ({partial_name}) does not exist")
+        with open(partial_path, 'r') as f:
+            partial_str = f.read()
+        template = template.replace(f'{{% include "{partial_name}" %}}', partial_str)
+    return template
+
+def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: str, partial_dir_path: str):
     with open(from_path, "r") as f:
         content = f.read()
     
@@ -239,6 +250,9 @@ def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: s
     
     with open(template_path, "r") as f:
         template_str = f.read()
+    
+    if os.path.exists(partial_dir_path):  
+        template_str = insert_partials(template_str, partial_dir_path)
         
     placeholders = re.findall(r'\{\{ (\w+) \}\}', template_str)
     for placeholder in placeholders:
@@ -257,7 +271,7 @@ def generate_page(from_path: str, template_dir: str, dest_path: str, basepath: s
         f.write(final_html)
     
 
-def generate_pages(from_dir: str, template_dir: str, dest_dir: str, basepath: str):
+def generate_pages(from_dir: str, template_dir: str, dest_dir: str, basepath: str, partial_dir_path: str):
     if not os.path.exists(from_dir):
         print(f"Directory ({from_dir}) does not exist")
         return
@@ -267,6 +281,6 @@ def generate_pages(from_dir: str, template_dir: str, dest_dir: str, basepath: st
         full_dest = os.path.join(dest_dir, item)
         if os.path.isfile(full_src) and item.endswith(".md"):
             dest_name = item.replace(".md", ".html")
-            generate_page(full_src, template_dir, os.path.join(dest_dir, dest_name), basepath)
+            generate_page(full_src, template_dir, os.path.join(dest_dir, dest_name), basepath, partial_dir_path)
         if os.path.isdir(full_src):
-            generate_pages(full_src, template_dir, full_dest, basepath)
+            generate_pages(full_src, template_dir, full_dest, basepath, partial_dir_path)
