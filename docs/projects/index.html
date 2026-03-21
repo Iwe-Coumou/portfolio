@@ -31,6 +31,7 @@
     <script>
       {
       const id = "topics-projects/site-generator-card".replace("/", "-");
+      console.log(id);
       const topics = "github-pages, markdown, portfolio, python, static-site-generator".split(",").map(t => t.trim());
       document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
@@ -45,6 +46,7 @@
     <script>
       {
       const id = "topics-projects/finance-backend-card".replace("/", "-");
+      console.log(id);
       const topics = "docker, fastapi, finance, portfolio-analytics, postgresql, python, redis, timescaledb".split(",").map(t => t.trim());
       document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");

@@ -6,6 +6,7 @@
     <script>
       {
       const id = "topics-{{ url }}-card".replace("/", "-");
+      console.log(id);
       const topics = "{{ topics }}".split(",").map(t => t.trim());
       document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
