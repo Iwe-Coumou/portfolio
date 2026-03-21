@@ -27,17 +27,23 @@
   <div class="project-card-content">
     <h3><a href="/portfolio/projects/site-generator">Portfolio Site & Static Site Generator</a></h3>
     <p>Static Site Generator in Python</p>
-    <div class="post-card-meta">
-      <span class="topic">github-pages markdown portfolio python static-site-generator</span>
-    </div>
+    <div class="post-card-meta" id="topics-projects/site-generator"></div>
+    <script>
+      const topics = "github-pages markdown portfolio python static-site-generator".split(",").map(t => t.trim());
+      document.getElementById("topics-projects/site-generator").innerHTML = 
+        topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+    </script>
   </div>
 </div><div class="project-card">
   <div class="project-card-content">
     <h3><a href="/portfolio/projects/finance-backend">Portfolio Analytics Backend</a></h3>
     <p>Backend with Timescaledb and Fastapi to Create Portfolio Analytics</p>
-    <div class="post-card-meta">
-      <span class="topic">docker fastapi finance portfolio-analytics postgresql python redis timescaledb</span>
-    </div>
+    <div class="post-card-meta" id="topics-projects/finance-backend"></div>
+    <script>
+      const topics = "docker fastapi finance portfolio-analytics postgresql python redis timescaledb".split(",").map(t => t.trim());
+      document.getElementById("topics-projects/finance-backend").innerHTML = 
+        topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+    </script>
   </div>
 </div>
     </article>
