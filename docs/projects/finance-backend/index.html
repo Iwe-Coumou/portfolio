@@ -20,7 +20,10 @@
       <a href="/portfolio/blog">Blog</a>
       <a href="/portfolio/contact">Contact</a>
     </nav>
-    {% include "page-nav" %}
+    <div class="page-nav">
+      <a href="/portfolio/projects">← Back to Projects</a>
+      <a href="/portfolio/projects/site-generator">Portfolio Site & Static Site Generator →</a>
+    </div>
     <div id="repo-card"></div>
     <script>
     fetch("https://api.github.com/repos/Iwe-Coumou/finance-backend")

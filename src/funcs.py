@@ -223,7 +223,7 @@ def get_frontmatter(content: str) -> tuple[dict, str]:
     return frontmatter_dict, content
 
 def insert_partials(template: str, partial_dir: str) -> str:
-    matches = re.findall(r'\{% include "(\w+)" %\}', template)
+    matches = re.findall(r'\{% include "(\w[\w-]*)" %\}', template)
     for partial_name in matches:
         partial_path = os.path.join(partial_dir, f"{partial_name}.html")
         if not os.path.exists(partial_path):
