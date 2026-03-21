@@ -2,14 +2,13 @@
   <div class="project-card-content">
     <h3><a href="/{{ url }}">{{ title }}</a></h3>
     <p>{{ description }}</p>
-    <div class="post-card-meta" id="topics-{{ url }}-card"></div>
+    <div class="post-card-meta topics-container"></div>
     <script>
       {
-      const id = "topics-{{ url }}-card".replace("/", "-");
-      console.log(id);
-      const topics = "{{ topics }}".split(",").map(t => t.trim());
-      document.getElementById(id).innerHTML = 
-        topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+        const containers = document.querySelectorAll(".topics-container");
+        const container = containers[containers.length - 1];
+        const topics = "{{ topics }}".split(",").map(t => t.trim());
+        container.innerHTML = topics.map(t => `<span class="topic">${t}</span>`).join(" ");
       }
     </script>
   </div>
