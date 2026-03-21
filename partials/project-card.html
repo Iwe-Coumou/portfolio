@@ -2,10 +2,11 @@
   <div class="project-card-content">
     <h3><a href="/{{ url }}">{{ title }}</a></h3>
     <p>{{ description }}</p>
-    <div class="post-card-meta" id="topics-{{ url }}"></div>
+    <div class="post-card-meta" id="topics-{{ url }}-card"></div>
     <script>
+      const id = "topics-{{ url }}-card".replace("/", "-");
       const topics = "{{ topics }}".split(",").map(t => t.trim());
-      document.getElementById("topics-{{ url }}").innerHTML = 
+      document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
     </script>
   </div>

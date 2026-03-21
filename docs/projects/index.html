@@ -27,10 +27,11 @@
   <div class="project-card-content">
     <h3><a href="/portfolio/projects/site-generator">Portfolio Site & Static Site Generator</a></h3>
     <p>Static Site Generator in Python</p>
-    <div class="post-card-meta" id="topics-projects/site-generator"></div>
+    <div class="post-card-meta" id="topics-projects/site-generator-card"></div>
     <script>
+      const id = "topics-projects/site-generator-card".replace("/", "-");
       const topics = "github-pages, markdown, portfolio, python, static-site-generator".split(",").map(t => t.trim());
-      document.getElementById("topics-projects/site-generator").innerHTML = 
+      document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
     </script>
   </div>
@@ -38,10 +39,11 @@
   <div class="project-card-content">
     <h3><a href="/portfolio/projects/finance-backend">Portfolio Analytics Backend</a></h3>
     <p>Backend with Timescaledb and Fastapi to Create Portfolio Analytics</p>
-    <div class="post-card-meta" id="topics-projects/finance-backend"></div>
+    <div class="post-card-meta" id="topics-projects/finance-backend-card"></div>
     <script>
+      const id = "topics-projects/finance-backend-card".replace("/", "-");
       const topics = "docker, fastapi, finance, portfolio-analytics, postgresql, python, redis, timescaledb".split(",").map(t => t.trim());
-      document.getElementById("topics-projects/finance-backend").innerHTML = 
+      document.getElementById(id).innerHTML = 
         topics.map(t => `<span class="topic">${t}</span>`).join(" ");
     </script>
   </div>
