@@ -114,6 +114,10 @@ blockquote {
   font-size: 0.85em;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 .search-container {
   position: relative;
   margin-bottom: 24px;
