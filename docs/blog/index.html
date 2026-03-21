@@ -31,6 +31,15 @@
     <div class="post-card-meta">
       <span class="post-date" id="date-blog/timescaledb">05-04-2026</span>
     </div>
+    <div class="post-card-meta topics-container"></div>
+    <script>
+      {
+        const containers = document.querySelectorAll(".topics-container");
+        const container = containers[containers.length - 1];
+        const topics = "finance, databases, python".split(",").map(t => t.trim());
+        container.innerHTML = topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+      }
+    </script>
     <script>
       const date = new Date("05-04-2026".split("-").reverse().join("-"));
       el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
@@ -43,6 +52,15 @@
     <div class="post-card-meta">
       <span class="post-date" id="date-blog/test">05-03-2026</span>
     </div>
+    <div class="post-card-meta topics-container"></div>
+    <script>
+      {
+        const containers = document.querySelectorAll(".topics-container");
+        const container = containers[containers.length - 1];
+        const topics = "finance, dagabases, python, test".split(",").map(t => t.trim());
+        container.innerHTML = topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+      }
+    </script>
     <script>
       const date = new Date("05-03-2026".split("-").reverse().join("-"));
       el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
@@ -55,6 +73,15 @@
     <div class="post-card-meta">
       <span class="post-date" id="date-blog/static-site-generator">05-03-2026</span>
     </div>
+    <div class="post-card-meta topics-container"></div>
+    <script>
+      {
+        const containers = document.querySelectorAll(".topics-container");
+        const container = containers[containers.length - 1];
+        const topics = "python, static-site-generator, markdown".split(",").map(t => t.trim());
+        container.innerHTML = topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+      }
+    </script>
     <script>
       const date = new Date("05-03-2026".split("-").reverse().join("-"));
       el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});

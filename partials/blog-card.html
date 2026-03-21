@@ -5,6 +5,15 @@
     <div class="post-card-meta">
       <span class="post-date" id="date-{{ url }}">{{ date }}</span>
     </div>
+    <div class="post-card-meta topics-container"></div>
+    <script>
+      {
+        const containers = document.querySelectorAll(".topics-container");
+        const container = containers[containers.length - 1];
+        const topics = "{{ topics }}".split(",").map(t => t.trim());
+        container.innerHTML = topics.map(t => `<span class="topic">${t}</span>`).join(" ");
+      }
+    </script>
     <script>
       const date = new Date("{{ date }}".split("-").reverse().join("-"));
       el.textContent = date.toLocaleDateString("en-GB", {year: "numeric", month: "long", day: "numeric"});
