@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
-  {% include "head"%}
+  {% include "head" %}
   <body>
-    {% include "nav"%}
-    {% include "page-nav"%}
+    {% include "nav" %}
+    {% include "page-nav" %}
     <div id="repo-card"></div>
     <script>
     fetch("https://api.github.com/repos/{{ github }}")
